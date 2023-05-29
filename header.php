@@ -17,7 +17,6 @@
           <li><a href="#" >Contacts</a></li>
           <li><a href="signup.php" >Signup</a></li>
           <li><a href="signin.php" >Login</a></li>
-          <li><a href="">Trial</a></li>
         </ul>
       </div>
 </body>
