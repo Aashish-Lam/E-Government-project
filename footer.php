@@ -12,6 +12,7 @@
         <h1>
     This is a footer page
     </h1>
+    <h2>This is made for footer to be include in every project</h2>
     </footer>
 </body>
 </html>
