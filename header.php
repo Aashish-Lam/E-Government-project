@@ -13,8 +13,8 @@
           <a href="#"><img class="loogo" src="logo.png" alt="headLogo"></a>
         </div>
         <ul class="nav-links">
-          <li><a href="index.php" >Contacts</a></li>
-          <li><a href="#" >About</a></li>
+          <li><a href="index.php" >Home</a></li>
+          <li><a href="#" >Contacts</a></li>
           <li><a href="signup.php" >Signup</a></li>
           <li><a href="signin.php" >Login</a></li>
         </ul>
