@@ -33,7 +33,8 @@
           <li><a href="certificate.php" >Certificate</a></li>
           <li><a href="about.php" >About Us</a></li>
           <li><a href="contact.php" >Contact</a></li>
-          <button id="myButton">Profile</button>
+          <!-- <li><button id="myButton">Profile</button></li> -->
+          <li><a href="#" id="myButton">Profile</a></li>
           <!-- <li><a href="signup.php" >Signup</a></li>
           <li><a href="signin.php" >Login</a></li> -->
           <!-- <div id="user-btn" class="fas fa-user"></div> -->
@@ -54,14 +55,14 @@
             <a href="user_register.php" class="option-btn">register</a>
             <a href="user_login.php" class="option-btn">login</a>
          </div> -->
-         <a href="components/user_logout.php" class="delete-btn" onclick="return confirm('logout from the website?');">logout</a> 
+         <a href="signout.php" class="delete-btn" onclick="return confirm('Logout from the website?');">Logout</a> 
          <?php
             }else{
          ?>
-         <p>please login or register first!</p>
+         <p id="para2">Please Login or Register first!</p>
          <div class="flex-btn">
-            <a href="user_register.php" class="option-btn">register</a>
-            <a href="user_login.php" class="option-btn">login</a>
+            <a href="signup.php" class="option-btn">Register</a>
+            <a href="signin.php" class="option-btn">Login</a>
          </div>
          <?php
             }
