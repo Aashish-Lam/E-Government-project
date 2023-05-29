@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+    
+</head>
+<body>
+  <?php
+  include_once 'header.php'
+  ?>
+  
+      <div class="hero">
+        <div class="hero-text">
+          <h1>
+            Birth registraion site
+          </h1>
+          This is a birth registration sigh hosted by <span class="red">Government of Nepal</span>
+          <p>
+            <button class="btn">Fill the form</button>
+          </p>
+        </div>
+        <div class="hero-image">
+          <img src="hero.png" alt="">
+        </div>
+
+      </div >
+
+      <footer>
+        
+</footer>
+
+</body>
+</html>
