@@ -4,6 +4,36 @@ body {
   width: 100%;
   font-family: "Roboto Slab", serif;
 }
+
+.message{
+  position: sticky;
+  top:0;
+  max-width: 1200px;
+  margin:0 auto;
+  background-color: cornsilk;
+  padding:1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap:1.5rem;
+  z-index: 1100;
+}
+
+.message span{
+  font-size: 2rem;
+  color: black;
+}
+
+.message i{
+  cursor: pointer;
+  color: red;
+  font-size: 2rem;
+}
+
+.message i:hover{
+  color: black;
+}
+
 .nav {
   display: flex;
   justify-content: space-between;
@@ -45,3 +75,4 @@ body {
   background-color: #c2d7ef;
   border-radius: 10%;
 }
+
