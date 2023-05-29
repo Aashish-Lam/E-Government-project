@@ -49,5 +49,7 @@ if(isset($_SESSION['user_id'])){
         
 </footer>
 
+<script src="script.js"></script>
+
 </body>
 </html>
