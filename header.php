@@ -18,6 +18,7 @@
           <li><a href="signup.php" >Signup</a></li>
           <li><a href="signin.php" >Login</a></li>
           <li><a href="">Trial</a></li>
+          <li>haha my name is sharad</li>
         </ul>
       </div>
 </body>
