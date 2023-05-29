@@ -20,7 +20,7 @@
           </h1>
           This is a birth registration sigh hosted by <span class="red">Government of Nepal</span>
           <p>
-            <button class="btn">Fill the form</button>
+            <button class="btn"><a href="birth_form.php">Fill the form</a></button>
           </p>
         </div>
         <div class="hero-image">
