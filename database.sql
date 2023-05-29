@@ -1,3 +1,7 @@
+CREATE DATABASE birth_certificates;
+
+USE birth_certificates;
+
 CREATE TABLE `users` (
     `id` int(100) NOT NULL,
     `username` varchar(20) NOT NULL,
