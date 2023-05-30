@@ -12,3 +12,28 @@ CREATE TABLE `users` (
 
 ALTER TABLE `users`
     ADD PRIMARY KEY (`id`);
+
+CREATE TABLE `u_certificates` (
+    `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `full_name` VARCHAR(255) NOT NULL,
+    `date_of_birth` DATE NOT NULL,
+    `time_of_birth` TIME NOT NULL,
+    `gender` VARCHAR(255) NOT NULL,
+    `pp_image` VARCHAR(255) NOT NULL,
+    `document_image` VARCHAR(255) NOT NULL,
+    `father_name` VARCHAR(255) NOT NULL,
+    `citizenship_image` VARCHAR(255) NOT NULL,
+    `mother_name` VARCHAR(255) NOT NULL,
+    `grandfather_name` VARCHAR(255) NOT NULL,
+    `p_city` VARCHAR(255) NOT NULL,
+    `p_ward` VARCHAR(255) NOT NULL,
+    `p_district` VARCHAR(255) NOT NULL,
+    `p_municipality` VARCHAR(255) NOT NULL,
+    `p_province` VARCHAR(255) NOT NULL,
+    `t_city` VARCHAR(255) NOT NULL,
+    `t_ward` VARCHAR(255) NOT NULL,
+    `t_district` VARCHAR(255) NOT NULL,
+    `t_municipality` VARCHAR(255) NOT NULL,
+    `t_province` VARCHAR(255) NOT NULL,
+    `user_id` INT(11) NOT NULL
+);
