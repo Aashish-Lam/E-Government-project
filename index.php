@@ -45,9 +45,12 @@ if(isset($_SESSION['user_id'])){
 
       </div >
 
-      <footer>
-        
-</footer>
+
+      <?php
+  include_once 'footer.php'
+  ?>
+
+
 
 <script src="script.js"></script>
 

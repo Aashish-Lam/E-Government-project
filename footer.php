@@ -8,13 +8,15 @@
     <link rel="stylesheet" href="footer.css">
 </head>
 <body>
-    <footer>
-        <h1>
-    This is a footer page
-    </h1>
-    <h2>This is made for footer to be include in every project</h2>
-    <h3>Just for checking git </h3>
-    <h1>littey motu</h1>
-    </footer>
+<footer class="sticky-footer">
+        <!-- <h2>Footer Stick to the Bottom</h2> -->
+        <ul>
+            <li><a href="index.php">Home</a></li>
+            <li><a href="birth_form.php">Form</a></li>
+            <li><a href="contact.php">Contacts</a></li>
+            <li><a href="signin.php">Signin</a></li>
+        </ul>
+        <p> © Copyright Government of Nepal 2020.</p>
+</footer>
 </body>
 </html>
