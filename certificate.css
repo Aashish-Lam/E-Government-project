@@ -1,18 +1,16 @@
 .container {
-    position: absolute;
+    position:absolute;
     border: 5px groove #3CA8E8;
     box-shadow: 1px 1px 3px 3px #E65758;
     background-image: url(image/nepal.png);
     background-repeat: no-repeat;
     width: 98%;
-    height: 95%;
+    height: 96%;
     background-position: center;
     background-size: auto;
     background-position-x: 50%;
     background-position-y: 65% ;
-
-      
-      
+    overflow: hidden;
   } 
 
   .head{
@@ -34,6 +32,13 @@
     font-size: 30px;
     margin-top: 1%;
     text-align: center;
+
+}
+
+.alu img{
+  width: 2cm;
+  height: 2.5cm;
+  padding-right: 15px;
 }
 .content{
   width: auto;
@@ -60,3 +65,5 @@
   height: 2cm;
 
 }
+
+
