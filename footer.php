@@ -9,14 +9,38 @@
 </head>
 <body>
 <footer class="sticky-footer">
-        <!-- <h2>Footer Stick to the Bottom</h2> -->
-        <ul>
-            <li><a href="index.php">Home</a></li>
-            <li><a href="birth_form.php">Form</a></li>
-            <li><a href="contact.php">Contacts</a></li>
-            <li><a href="signin.php">Signin</a></li>
+<div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <h3>Useful links</h3>
+       <div class="links">
+           <a href="https://nepal.gov.np/">Government of nepal website</a>
+            <br><a href="https://www.immigration.gov.np/">Department of immigration</a>
+            <br><a href="https://dohs.gov.np/">Department of Health Services</a>
+       </div>
+
+      </div>
+      <div class="col-md-4">
+        <h3>Contact Us</h3>
+        <p>Email: <a href="mailto:info@example.com">info@example.com</a></p>
+        <p>Phone: 123-456-7890</p>
+      </div>
+      <div class="col-md-4">
+        <h3>Social Media</h3>
+        <ul class="social-media">
+          <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+          <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+          <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+          <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
         </ul>
-        <p> © Copyright Government of Nepal 2020.</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <p>Copyright &copy; 2023 Bros Company. All rights reserved.</p>
+      </div>
+    </div>
+  </div>
 </footer>
 </body>
 </html>
