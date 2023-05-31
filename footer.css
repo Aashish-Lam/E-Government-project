@@ -55,7 +55,7 @@ footer {
 }
 /* Sticky Footer Styling */
 body {
-  min-height: 100vh;
+  min-height: 10vh;
 }
 /* .sticky-footer {
   position: sticky;
