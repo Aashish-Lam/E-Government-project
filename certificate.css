@@ -114,7 +114,7 @@ padding-left: 25px;
   margin-top: 20px;
 }
 
-/* certificate2 */
+/* certificate */
 .c1_title {
   text-align: center;
   font-size: 3.5rem;
@@ -145,6 +145,10 @@ padding-left: 25px;
   margin-left: 10px; */
 }
 
+.data-details {
+  display: flex;
+  flex-direction: column;
+}
 .data-details h3 {
   font-size: 2rem;
   margin: 0;
