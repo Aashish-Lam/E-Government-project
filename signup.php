@@ -91,7 +91,7 @@ if(isset($_POST['signup'])){
       <input class="btn" type="submit" name="signup" value="Sign Up"> <br> <br>
 
       
-      <a href="signin.html"> Already have an account ? </a>
+      <a href="signin.php"> Already have an account ? </a>
         
       </div>
 

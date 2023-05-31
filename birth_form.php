@@ -47,6 +47,8 @@ if(isset($_POST['submit'])){
     $t_municipality = filter_var($t_municipality, FILTER_UNSAFE_RAW);
     $t_province = $_POST['t_province'];
     $t_province = filter_var($t_province, FILTER_UNSAFE_RAW);
+    $citizenship_no = $_POST['citizenship_no'];
+    $citizenship_no = filter_var($citizenship_no, FILTER_UNSAFE_RAW);
 
     $photo1_name = $_FILES['photo1']['name'];
     $photo1_tmp_name = $_FILES['photo1']['tmp_name'];
@@ -72,9 +74,9 @@ if(isset($_POST['submit'])){
     $select_certificates = $conn->prepare("SELECT * FROM `u_certificates` WHERE user_id = ?");
     $select_certificates->execute([$user_id]);
  
-    if($select_certificates->rowCount() < 10){
-        $insert_certificates = $conn->prepare("INSERT INTO `u_certificates`(full_name, date_of_birth, time_of_birth, gender, pp_image, document_image, father_name, citizenship_image, mother_name, grandfather_name, p_city, p_ward, p_district, p_municipality, p_province, t_city, t_ward, t_district, t_municipality, t_province, user_id) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-        $insert_certificates->execute([$full_name, $dob, $tob, $gender, $photo1_name, $photo2_name, $father_name, $photo3_name, $mother_name, $grandfather_name, $p_city, $p_ward, $p_district, $p_municipality, $p_province, $t_city, $t_ward, $t_district, $t_municipality, $t_province, $user_id]);
+    if($select_certificates->rowCount() < 6){
+        $insert_certificates = $conn->prepare("INSERT INTO `u_certificates`(full_name, date_of_birth, time_of_birth, gender, pp_image, document_image, father_name, citizenship_image, mother_name, grandfather_name, p_city, p_ward, p_district, p_municipality, p_province, t_city, t_ward, t_district, t_municipality, t_province, user_id, citizenship_no) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+        $insert_certificates->execute([$full_name, $dob, $tob, $gender, $photo1_name, $photo2_name, $father_name, $photo3_name, $mother_name, $grandfather_name, $p_city, $p_ward, $p_district, $p_municipality, $p_province, $t_city, $t_ward, $t_district, $t_municipality, $t_province, $user_id, $citizenship_no]);
   
         if($insert_certificates){
            if($photo1_size > 2000000 OR $photo2_size > 2000000 OR $photo3_size > 2000000){
@@ -163,6 +165,10 @@ if(isset($_POST['submit'])){
             <tr>
                 <td>Father's Name</td>
                 <td><input type="text" name="father_name"></td>
+            </tr>
+            <tr>
+                <td>Father's Citizenship Number</td>
+                <td><input type="text" name="citizenship_no"></td>
             </tr>
             <tr>
                 <td>Father's Citizenship Photo</td>
