@@ -30,18 +30,20 @@ $select_certificates->execute([$user_id]);
         include 'header.php';
     ?>
 
-    <h1 class="c1_title">Your Certificates</h2>
-
     <ul class="data-list">
     <?php
     // Assuming you have fetched the data from the database and stored it in an array called $dataRows
+    if($select_certificates->rowCount() > 0){?>
 
+        <h1 class="c1_title">Your Certificates</h2>
+
+        <?php
     foreach ($select_certificates as $row) {
         $image = $row['pp_image'];
         $full_name = $row['full_name'];
         $dob = $row['date_of_birth'];
         ?>
-
+        
         <li class="data-item">
             <img src="uploaded_img/<?= $image; ?>" alt="Profile Image">
             <div class="data-details">
@@ -51,6 +53,11 @@ $select_certificates->execute([$user_id]);
             <a href="view_certificate.php?cid=<?= $row['id']; ?>">View Certificate</a>
         </li>
 
+    <?php
+    }
+    }
+    else{?>
+        <h1 class="c1_title" >You dont have any certificates!</h1>
     <?php
     }
     ?>

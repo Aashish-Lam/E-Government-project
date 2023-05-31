@@ -263,10 +263,6 @@ if(isset($_POST['submit'])){
     </form>
     </section>
 
-    <?php
-    include 'footer.php';
-    ?>
-
     <script src="script.js"></script>
     <script>
         // function previewImage(event) {
