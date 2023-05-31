@@ -3,15 +3,12 @@ CREATE DATABASE birth_certificates;
 USE birth_certificates;
 
 CREATE TABLE `users` (
-    `id` int(100) NOT NULL,
+    `id` int(100) AUTO_INCREMENT PRIMARY KEY,
     `username` varchar(20) NOT NULL,
     `email` varchar(50) NOT NULL,
     `phone` varchar(50) NOT NULL,
     `password` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
-ALTER TABLE `users`
-    ADD PRIMARY KEY (`id`);
 
 CREATE TABLE `u_certificates` (
     `id` INT AUTO_INCREMENT PRIMARY KEY,
@@ -35,5 +32,6 @@ CREATE TABLE `u_certificates` (
     `t_district` VARCHAR(255) NOT NULL,
     `t_municipality` VARCHAR(255) NOT NULL,
     `t_province` VARCHAR(255) NOT NULL,
-    `user_id` INT(11) NOT NULL
+    `user_id` INT(11) NOT NULL,
+    `citizenship_no` VARCHAR(255) NOT NULL
 );

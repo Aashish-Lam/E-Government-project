@@ -1,141 +1,104 @@
 <?php
-// Connect to the database
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "birth_certificates";
+    
+include 'connection.php';
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+session_start();
 
-// Check the connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+if(isset($_SESSION['user_id'])){
+    $user_id = $_SESSION['user_id'];
+}else{
+    $user_id = '';
+    header('location:signin.php');
+};
 
-// Retrieve data from the database
-$sql = "SELECT * FROM u_certificates ORDER BY id DESC LIMIT 1";
-$result = $conn->query($sql);
+$cid = $_GET['cid'];
 
-$row_count = $result->num_rows;
-if ($row_count) {
-    // Output data of each row
-    while ($row = $result->fetch_assoc()) {
-        $full_name = $row["full_name"];
-        $dob = $row["date_of_birth"];
-        $tob = date("h:i A", strtotime($row["time_of_birth"]));
-        $pp_image = $row["pp_image"];
-        $doc_image = $row["document_image"];
-        $c_image = $row["citizenship_image"];
-        $gender = $row["gender"];
-        $father_name = $row["father_name"];
-        $mother_name = $row["mother_name"];
-        $grandfather_name = $row["grandfather_name"];
-        $p_city = $row["p_city"];
-        $p_ward = $row["p_ward"];
-        $p_district = $row["p_district"];
-        $p_municipality = $row["p_municipality"];
-        $p_province = $row["p_province"];
-    }
-} else {
-    echo "0 results";
-}
-$conn->close();
+$select_certificates = $conn->prepare("SELECT * FROM `u_certificates` WHERE id = ?");
+$select_certificates->execute([$cid]);
+
+$fetch_certificates = $select_certificates->fetch(PDO::FETCH_ASSOC);
+
+$tob = date("h:i A", strtotime($fetch_certificates['time_of_birth']));
+
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Birth Certificate</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            font-size: 12pt;
-            margin: 0;
-            padding: 0;
-        }
-        .container {
-            width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f5f5f5;
-            border: 1px solid #ddd;
-        }
-        h1 {
-            font-size: 24pt;
-            text-align: center;
-            margin: 0;
-            padding: 0;
-        }
-        h2 {
-            font-size: 18pt;
-            margin: 20px 0 10px;
-            padding: 0;
-        }
-        .info {
-            margin: 10px 0;
-        }
-        label {
-            display: inline-block;
-            width: 120px;
-            font-weight: bold;
-        }
-
-        img {
-            height: 200px;
-            width: 200px;
-            float: right;
-        }
-
-        #img2 {
-            position: absolute;
-            right: 25rem;
-            top: 17rem;
-            width: 350px;
-            height: 250px;
-        }
-
-        #img3 {
-            position: absolute;
-            right: 25rem;
-            top: 33rem;
-            width: 350px;
-            height: 250px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="certificate.css">
 </head>
 <body>
-    <div class="container">
-        <h1>BIRTH CERTIFICATE</h1>
 
-        <img src="uploaded_img/<?= $pp_image; ?>" alt="" id="img1">
-        <img src="uploaded_img/<?= $doc_image; ?>" alt="" id="img2">
-        <img src="uploaded_img/<?= $c_image; ?>" alt="" id="img3">
+<?php
 
-        <h2>Full Name</h2>
-        <p class="info"><?php echo $full_name; ?></p>
-        <h2>Date of Birth</h2>
-        <p class="info"><?php echo $dob; ?></p>
-        <h2>Time of Birth</h2>
-        <p class="info"><?php echo $tob; ?></p>
-        <h2>Gender</h2>
-        <p class="info"><?php echo $gender; ?></p>
-        <h2>Father's Name</h2>
-        <p class="info"><?php echo $father_name; ?></p>
-        <h2>Mother's Name</h2>
-        <p class="info"><?php echo $mother_name; ?></p>
-        <h2>Grandfather's Name</h2>
-        <p class="info"><?php echo $grandfather_name; ?></p>
-        <h2>City/Village</h2>
-        <p class="info"><?php echo $p_city; ?></p>
-        <h2>Ward Number</h2>
-        <p class="info"><?php echo $p_ward; ?></p>
-        <h2>District</h2>
-        <p class="info"><?php echo $p_district; ?></p>
-        <h2>Municipality</h2>
-        <p class="info"><?php echo $p_municipality; ?></p>
-        <h2>Province</h2>
-        <p class="info"><?php echo $p_province; ?></p>
+include 'header.php';
+
+?>
+
+
+<div class="certificate">
+            
+  <div class="container">
+    <div class="head">
+      <img src="image/Coat-of-arms-of-Nepal-01.png">
+      <p>Government of Nepal
+        <br>Ministry of Health and Population<br>
+      Kamaladi, Kathmandu</p>
+      <img id="pp_image" src="uploaded_img/<?= $fetch_certificates['pp_image']; ?>" alt="">
+      <!-- <img src="image/Flag_of_Nepal.png" alt=""> -->
     </div>
+
+    <div class="header">
+      <h1>Birth Certificate</h1>
+
     </div>
+
+    <div class="content">
+      <p>This is to certify that <span><?= $fetch_certificates['full_name'] ?></span> son/daughther of Mr. <span><?= $fetch_certificates['father_name'] ?></span> and Ms. <span><?= $fetch_certificates['mother_name'] ?></span> 
+      grandson/daughter of</p>
+         <p> Mr. <span><?= $fetch_certificates['grandfather_name'] ?></span> was born on date: <span><?= $fetch_certificates['date_of_birth'] ?></span> at <span><?= $tob?></span>. The permanent address of the child is <span><?= $fetch_certificates['p_city'] ?></span>, Ward No.-<span><?= $fetch_certificates['p_ward'] ?></span>,</p> 
+         <p><span><?= $fetch_certificates['p_municipality'] ?></span> Municipality, <span><?= $fetch_certificates['p_district'] ?></span> District, <span><?= $fetch_certificates['p_province'] ?></span>. Father's citizenship number is <span><?= $fetch_certificates['citizenship_no'] ?></span>.
+         This certificate is</p>
+         <p>issued in accordance with Government of Nepal laws and regulations governing registration of births. It attests to the fact that the child described</p>
+         <p>above was born to the parents mentioned. This certificate serves as an official record of the child's birth and is valid for all legal purposes.</p>
+        
+        
+</div>
+
+    <div class="bottom">
+      <div class="district-head">
+        <img src="image/Screenshot 2023-05-30 092127.png" alt="">
+        <h4 style="font-size: 20px;">..........................</h4>
+        <h5 style="font-size: 20px;">Head of the CDO</h5>
+      </div>
+      <div class="issued">
+          <p>Issued by:<br>
+            Central District Office<br>
+            Kathmandu<BR>
+              Date:2080-01-05
+          </p>
+      </div>
+      <div class="gov-stamp">
+        <img src="image/logo-b-1.png" alt="">
+        <h4>Government Stamp</h4>
+      </div>
+
+    </div>
+
+
+  </div>
+
+</div>
+
+
+<script src="script.js"></script>
+
+<?php
+    include 'footer.php';
+    ?>
 </body>
 </html>
