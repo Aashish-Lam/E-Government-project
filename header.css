@@ -86,7 +86,7 @@ body {
 .nav-links #myButton {
   border: 2px solid white;
   padding: 5px 10px;
-  border-radius: 1rem;
+  border-radius: .7rem;
   background-color: white;
   color: #0093e9;
   transition: .3s;
@@ -102,10 +102,11 @@ body {
   right: 2rem;
   width: 15rem;
   height: 10rem;
-  background-color: white;
+  background-color: wheat;
   border: 2px solid black;
   border-radius: 1rem;
   display: none;
+  z-index: 1500;
 }
 
 #profile p{
