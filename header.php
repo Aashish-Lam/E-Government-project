@@ -20,8 +20,6 @@
   <title>Document</title>
   <link rel="stylesheet" href="header.css">
 
-  <!-- font awesome cdn link  -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 </head>
 <body>
 <div class="nav">
@@ -30,7 +28,7 @@
         </div>
         <ul class="nav-links">
           <li><a href="index.php" >Home</a></li>
-          <li><a href="certificate2.php" >Certificate</a></li>
+          <li><a href="certificate.php" >Certificate</a></li>
           <li><a href="about.php" >About Us</a></li>
           <li><a href="contact.php" >Contact</a></li>
           <!-- <li><button id="myButton">Profile</button></li> -->

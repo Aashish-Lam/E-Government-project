@@ -72,4 +72,14 @@ body {
   border-radius: 10px;
   background-color: #0093e9;
   background-image: linear-gradient(10deg, #0093e9 0%, #80d0c7 100%);
+  cursor: pointer;
+}
+
+.btn a {
+  text-decoration: none;
+  font-size: 2rem;
+}
+
+.btn:hover {
+  background-color: white;
 }

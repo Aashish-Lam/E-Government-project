@@ -1,5 +1,0 @@
-<?php echo "<p>This is to certify that {$fetch_certificates['full_name']} son/daughter of Mr. {$fetch_certificates['father_name']} and Ms. {$fetch_certificates['mother_name']} 
-        grandson/daughter of Mr. {$fetch_certificates['grandfather_name']} was born on date: {$fetch_certificates['date_of_birth']} at {$fetch_certificates['time_of_birth']}. 
-        The permanent address of the child is {$fetch_certificates['p_city']}, Ward No.- {$fetch_certificates['p_ward']}, {$fetch_certificates['p_district']} District, {$fetch_certificates['p_municipality']} Muncipality, {$fetch_certificates['p_province']}. This certificate is 
-        issued in accordance with Government of Nepal laws and regulations governing registration of births. It attests to the fact that the child described 
-        above was born to the parents mentioned. This certificate serves as an official record of the child's birth and is valid for all legal purposes.</p>";?>

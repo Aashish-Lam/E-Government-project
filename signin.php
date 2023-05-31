@@ -45,7 +45,7 @@ if(isset($_POST['submit'])){
 
 <body>
 <?php
-  include_once 'header.php'
+  include 'header.php'
   ?>
 
   <form name="myForm" action="" method="POST">
@@ -68,5 +68,10 @@ if(isset($_POST['submit'])){
     </div>
   </form>
 
+  <?php
+    include 'footer.php';
+    ?>
+
+  <script src="script.js"></script>
 </body>
 </html>
