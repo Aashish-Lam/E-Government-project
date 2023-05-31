@@ -57,10 +57,10 @@ footer {
 body {
   min-height: 10vh;
 }
-.sticky-footer {
+/* .sticky-footer {
   position: sticky;
   top: 100%;
-}
+} */
 a,
 a:visited {
   text-decoration: none;
