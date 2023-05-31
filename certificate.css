@@ -47,6 +47,7 @@
   width: auto;
   height: auto;
   text-align: center;
+  justify-content: space-between;
 }
 .content p{
       font-family: 'Times New Roman', Times, serif;
