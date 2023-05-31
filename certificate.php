@@ -59,8 +59,5 @@ $select_certificates->execute([$user_id]);
 
 
 <script src="script.js"></script>
-<?php
-    include 'footer.php';
-    ?>
 </body>
 </html>
