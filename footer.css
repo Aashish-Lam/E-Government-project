@@ -54,14 +54,14 @@ footer {
   margin-right: 5px;
 }
 /* Sticky Footer Styling */
-body {
+/* body {
   min-height: 10vh;
 }
-/* .sticky-footer {
+.sticky-footer {
   position: sticky;
   top: 100%;
-} */
-a,
+}*/
+a, 
 a:visited {
   text-decoration: none;
   color: #fff;
