@@ -13,8 +13,8 @@ if(isset($_SESSION['admin_id'])){
 
 $cid = $_GET['cid'];
 
-$select_certificates = $conn->prepare("SELECT * FROM `u_certificates` WHERE id = ?");
-$select_certificates->execute([$cid]);
+$select_certificates = $conn->prepare("SELECT * FROM `a_certificates` LIMIT 1");
+$select_certificates->execute();
 
 $fetch_certificates = $select_certificates->fetch(PDO::FETCH_ASSOC);
 
@@ -41,11 +41,11 @@ $t_municipality = $fetch_certificates["t_municipality"];
 $t_province = $fetch_certificates["t_province"];
 $user_id = $fetch_certificates["user_id"];
 
-$insert_certificates = $conn->prepare("INSERT INTO `a_certificates`(full_name, date_of_birth, time_of_birth, gender, pp_image, document_image, father_name, citizenship_image, mother_name, grandfather_name, p_city, p_ward, p_district, p_municipality, p_province, t_city, t_ward, t_district, t_municipality, t_province, user_id, citizenship_no) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+$insert_certificates = $conn->prepare("INSERT INTO `u_certificates`(full_name, date_of_birth, time_of_birth, gender, pp_image, document_image, father_name, citizenship_image, mother_name, grandfather_name, p_city, p_ward, p_district, p_municipality, p_province, t_city, t_ward, t_district, t_municipality, t_province, user_id, citizenship_no) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 $insert_certificates->execute([$full_name, $dob, $tob, $gender, $pp_image, $doc_image, $father_name, $c_image, $mother_name, $grandfather_name, $p_city, $p_ward, $p_district, $p_municipality, $p_province, $t_city, $t_ward, $t_district, $t_municipality, $t_province, $user_id, $c_no]);
 
-$delete_certificates = $conn->prepare("DELETE FROM `u_certificates` WHERE id = ?");
-$delete_certificates->execute([$cid]);
+// $delete_certificates = $conn->prepare("DELETE FROM `u_certificates` WHERE id = ?");
+// $delete_certificates->execute([$cid]);
 
-header('Location: see_u_certificates.php');
+header('Location: admin_dashboard.php');
 ?>

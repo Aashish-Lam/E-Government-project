@@ -13,7 +13,7 @@ if(isset($_SESSION['admin_id'])){
 
 $cid = $_GET['cid'];
 
-$select_certificates = $conn->prepare("SELECT * FROM `u_certificates` WHERE id = ?");
+$select_certificates = $conn->prepare("SELECT * FROM `a_certificates` WHERE id = ?");
 $select_certificates->execute([$cid]);
 
 $fetch_certificates = $select_certificates->fetch(PDO::FETCH_ASSOC);
@@ -157,14 +157,17 @@ $t_province = $fetch_certificates["t_province"];
             transform: scale(1.1);
         }
 
-        .avc-button #l1:hover {
+        .avc-button #l1:hover,
+        .avc-button #l4:hover {
             background-color: #3CA8E8;
             border-color: #3CA8E8;
         }
 
-        .avc-button #l2:hover {
-            background-color: lightgreen;
-            border-color: lightgreen;
+        .avc-button #l2 {
+            background-color: green;
+            color: white;
+            border: none;
+            transform: none;
         }
 
         .avc-button #l3:hover {
@@ -244,9 +247,10 @@ $t_province = $fetch_certificates["t_province"];
     </div>
 
     <div class="avc-button">
-        <a id="l1" href="update.php?cid=<?= $cid; ?>">Update</a>
-        <a id="l2" href="approve.php?cid=<?= $cid; ?>">Approve</a>
-        <a id="l3" href="delete.php?cid=<?= $cid; ?>">Delete</a>
+        <a id="l1" href="update.php?cid=<?= $cid; ?>">Update &uarr;</a>
+        <a id="l2" href="#">Approved &#10003;</a>
+        <a id="l3" href="a_delete.php?cid=<?= $cid; ?>">Delete &#128465;</a>
+        <a id="l4" href="see_a_certificates.php">Go Back &#8592;</a>
     </div>
 
     <script src="script.js"></script>
