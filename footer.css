@@ -1,8 +1,9 @@
 .footer {
   position: relative;
-  background-color: #0093e9;
+  background-color: #295d7cf0;
   font-size: 1.5rem;
   height: 350px;
+  color: white;
 }
 
 .row {
@@ -59,11 +60,14 @@
   position: sticky;
   top: 100%;
 }*/
-a, 
+a,
 a:visited {
   text-decoration: none;
   color: #fff;
 }
 .links {
   padding-top: 0px;
+}
+.footer-h3 {
+  color: honeydew;
 }
