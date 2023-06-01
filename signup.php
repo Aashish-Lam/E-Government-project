@@ -37,6 +37,7 @@ if(isset($_POST['signup'])){
           $insert_user = $conn->prepare("INSERT INTO `users`(username, email, phone, password) VALUES(?,?,?,?)");
           $insert_user->execute([$username, $email, $phone, $cpass]);
           $message[] = 'Registered successfully, Login now please!';
+          header('location:signin.php');
       }
     }
 }
@@ -97,9 +98,6 @@ if(isset($_POST['signup'])){
 
   </form>
 
-  <?php
-    include 'footer.php';
-    ?>
 
   <script src="script.js"></script>
 </body>

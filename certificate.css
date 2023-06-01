@@ -47,6 +47,7 @@
   width: auto;
   height: auto;
   text-align: center;
+  justify-content: space-between;
 }
 .content p{
       font-family: 'Times New Roman', Times, serif;
@@ -114,7 +115,7 @@ padding-left: 25px;
   margin-top: 20px;
 }
 
-/* certificate2 */
+/* certificate */
 .c1_title {
   text-align: center;
   font-size: 3.5rem;
@@ -131,8 +132,8 @@ padding-left: 25px;
   align-items: center;
   justify-content: space-evenly;
   margin-bottom: 30px;
-  margin-left: 25%;
-  margin-right: 25%;
+  margin-left: 20%;
+  margin-right: 20%;
   border: 1px solid black;
   border-radius: 5px;
 }
@@ -145,6 +146,10 @@ padding-left: 25px;
   margin-left: 10px; */
 }
 
+.data-details {
+  display: flex;
+  flex-direction: column;
+}
 .data-details h3 {
   font-size: 2rem;
   margin: 0;
