@@ -21,7 +21,7 @@ $select_certificates->execute([$user_id]);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Birth Certficates</title>
 
     <link rel="stylesheet" href="certificate.css">
 </head>
@@ -50,7 +50,7 @@ $select_certificates->execute([$user_id]);
                 <h3><?php echo $full_name; ?></h3>
                 <p>Date of Birth: <?php echo $dob; ?></p>
             </div>
-            <a href="view_certificate.php?cid=<?= $row['id']; ?>">View Certificate</a>
+            <a style="color=black" href="view_certificate.php?cid=<?= $row['id']; ?>">View Certificate</a>
         </li>
 
     <?php
@@ -62,8 +62,6 @@ $select_certificates->execute([$user_id]);
     }
     ?>
 </ul>
-
-
 
 <script src="script.js"></script>
 </body>
