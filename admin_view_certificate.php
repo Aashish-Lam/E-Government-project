@@ -133,6 +133,44 @@ $t_province = $fetch_certificates["t_province"];
             color: #fff;
             cursor: pointer;
         }
+
+        .avc-button {
+            height: 80px;
+            /* background-color: gray; */
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 3rem 11rem;
+        }
+
+        .avc-button a {
+            font-size: 2rem;
+            border: 1px solid black;
+            padding: 1rem 2rem;
+            border-radius: .5rem;
+            background-color: #f5f5f5;
+            transition: transform .3s;
+        }
+
+        .avc-button a:hover {
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .avc-button #l1:hover {
+            background-color: #3CA8E8;
+            border-color: #3CA8E8;
+        }
+
+        .avc-button #l2:hover {
+            background-color: lightgreen;
+            border-color: lightgreen;
+        }
+
+        .avc-button #l3:hover {
+            background-color: red;
+            border-color: red;
+        }
     </style>
 </head>
 <body>
@@ -205,7 +243,11 @@ $t_province = $fetch_certificates["t_province"];
         <img src="" alt="Large Image">
     </div>
 
-    <div></div>
+    <div class="avc-button">
+        <a id="l1" href="update.php?cid=<?= $cid; ?>">Update</a>
+        <a id="l2" href="approve.php?cid=<?= $cid; ?>">Approve</a>
+        <a id="l3" href="delete.php?cid=<?= $cid; ?>">Delete</a>
+    </div>
 
     <script src="script.js"></script>
     <script>
