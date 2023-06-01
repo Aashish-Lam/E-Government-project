@@ -13,7 +13,7 @@ if(isset($_SESSION['user_id'])){
 
 $cid = $_GET['cid'];
 
-$select_certificates = $conn->prepare("SELECT * FROM `u_certificates` WHERE id = ?");
+$select_certificates = $conn->prepare("SELECT * FROM `a_certificates` WHERE id = ?");
 $select_certificates->execute([$cid]);
 
 $fetch_certificates = $select_certificates->fetch(PDO::FETCH_ASSOC);
