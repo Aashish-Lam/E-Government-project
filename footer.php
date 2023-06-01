@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="footer.css">
 </head>
 <body>
-<footer class="sticky-footer">
-<div class="container">
+<footer class="footer">
+<div class="f_container">
     <div class="row">
       <div class="col-md-4">
         <h3>Useful links</h3>
@@ -35,12 +35,12 @@
         </ul>
       </div>
     </div>
-    <div class="row">
+  </div>
+  <div class="row">
       <div class="col-md-12">
         <p>Copyright &copy; 2023 Bros Company. All rights reserved.</p>
       </div>
     </div>
-  </div>
 </footer>
 </body>
 </html>
