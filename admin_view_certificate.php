@@ -1,45 +1,45 @@
 <?php
-// Connect to the database
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "birth_certificates";
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+include 'connection.php';
 
-// Check the connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+session_start();
 
-// Retrieve data from the database
-$sql = "SELECT * FROM u_certificates ORDER BY id DESC LIMIT 1";
-$result = $conn->query($sql);
+if(isset($_SESSION['admin_id'])){
+    $admin_id = $_SESSION['admin_id'];
+}else{
+    $admin_id = '';
+    header('location:admin_signin.php');
+};
 
-$row_count = $result->num_rows;
-if ($row_count) {
-    // Output data of each row
-    while ($row = $result->fetch_assoc()) {
-        $full_name = $row["full_name"];
-        $dob = $row["date_of_birth"];
-        $tob = date("h:i A", strtotime($row["time_of_birth"]));
-        $pp_image = $row["pp_image"];
-        $doc_image = $row["document_image"];
-        $c_image = $row["citizenship_image"];
-        $gender = $row["gender"];
-        $father_name = $row["father_name"];
-        $mother_name = $row["mother_name"];
-        $grandfather_name = $row["grandfather_name"];
-        $p_city = $row["p_city"];
-        $p_ward = $row["p_ward"];
-        $p_district = $row["p_district"];
-        $p_municipality = $row["p_municipality"];
-        $p_province = $row["p_province"];
-    }
-} else {
-    echo "0 results";
-}
-$conn->close();
+$cid = $_GET['cid'];
+
+$select_certificates = $conn->prepare("SELECT * FROM `u_certificates` WHERE id = ?");
+$select_certificates->execute([$cid]);
+
+$fetch_certificates = $select_certificates->fetch(PDO::FETCH_ASSOC);
+
+$tob = date("h:i A", strtotime($fetch_certificates['time_of_birth']));
+$full_name = $fetch_certificates["full_name"];
+$dob = $fetch_certificates["date_of_birth"];
+$pp_image = $fetch_certificates["pp_image"];
+$doc_image = $fetch_certificates["document_image"];
+$c_image = $fetch_certificates["citizenship_image"];
+$gender = $fetch_certificates["gender"];
+$father_name = $fetch_certificates["father_name"];
+$c_no = $fetch_certificates["citizenship_no"];
+$mother_name = $fetch_certificates["mother_name"];
+$grandfather_name = $fetch_certificates["grandfather_name"];
+$p_city = $fetch_certificates["p_city"];
+$p_ward = $fetch_certificates["p_ward"];
+$p_district = $fetch_certificates["p_district"];
+$p_municipality = $fetch_certificates["p_municipality"];
+$p_province = $fetch_certificates["p_province"];
+$t_city = $fetch_certificates["t_city"];
+$t_ward = $fetch_certificates["t_ward"];
+$t_district = $fetch_certificates["t_district"];
+$t_municipality = $fetch_certificates["t_municipality"];
+$t_province = $fetch_certificates["t_province"];
+
 ?>
 
 <!DOCTYPE html>
@@ -53,64 +53,97 @@ $conn->close();
             margin: 0;
             padding: 0;
         }
+
+        #title{
+            font-size: 4rem;
+            margin: 0;
+        }
         .container {
             width: 800px;
-            margin: 0 auto;
+            margin: 3rem auto;
             padding: 20px;
             background-color: #f5f5f5;
             border: 1px solid #ddd;
         }
-        h1 {
-            font-size: 24pt;
+        .container h1 {
+            font-size: 40px;
             text-align: center;
-            margin: 0;
+            margin-top: 5rem;
             padding: 0;
         }
         h2 {
-            font-size: 18pt;
+            font-size: 30px;
             margin: 20px 0 10px;
             padding: 0;
         }
         .info {
             margin: 10px 0;
+            font-size: 20px;
         }
-        label {
+
+        /* label {
             display: inline-block;
             width: 120px;
             font-weight: bold;
-        }
+        } */
 
-        img {
+        /* .container img {
             height: 200px;
             width: 200px;
-            float: right;
+            
+        } */
+
+        .image-container {
+            cursor: pointer;
         }
 
-        #img2 {
-            position: absolute;
-            right: 25rem;
-            top: 17rem;
-            width: 350px;
-            height: 250px;
+        .image-container img {
+            max-width: 200px;
+            transition: transform 0.3s;
         }
 
-        #img3 {
+        .image-container img:hover {
+            transform: scale(1.1);
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .overlay img {
+            max-width: 80%;
+            max-height: 80%;
+            object-fit: contain;
+        }
+
+        .close-btn {
             position: absolute;
-            right: 25rem;
-            top: 33rem;
-            width: 350px;
-            height: 250px;
+            top: 10px;
+            right: 10px;
+            font-size: 24px;
+            color: #fff;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
+
+    <?php
+        include 'admin_header.php';
+    ?>
     <div class="container">
-        <h1>BIRTH CERTIFICATE</h1>
+        <h1 id="title">BIRTH CERTIFICATE</h1>
 
-        <img src="uploaded_img/<?= $pp_image; ?>" alt="" id="img1">
-        <img src="uploaded_img/<?= $doc_image; ?>" alt="" id="img2">
-        <img src="uploaded_img/<?= $c_image; ?>" alt="" id="img3">
-
+        <h1>Personal Information</h1>
         <h2>Full Name</h2>
         <p class="info"><?php echo $full_name; ?></p>
         <h2>Date of Birth</h2>
@@ -119,12 +152,30 @@ $conn->close();
         <p class="info"><?php echo $tob; ?></p>
         <h2>Gender</h2>
         <p class="info"><?php echo $gender; ?></p>
+        <h2>Passport-size Photo</h2>
+        <div class="image-container">
+            <img src="uploaded_img/<?= $pp_image; ?>" alt="Image 1">
+        </div>
+        <h2>Hospital Photo</h2>
+        <div class="image-container">
+            <img src="uploaded_img/<?= $doc_image; ?>" alt="Image 2">
+        </div>
+        
+        <h1>Parent's Information</h1>
         <h2>Father's Name</h2>
         <p class="info"><?php echo $father_name; ?></p>
+        <h2>Father's Citizenship Number</h2>
+        <p class="info"><?php echo $c_no; ?></p>
+        <h2>Father's Citizenship Photo</h2>
+        <div class="image-container">
+            <img src="uploaded_img/<?= $c_image; ?>" alt="Image 3">
+        </div>
         <h2>Mother's Name</h2>
         <p class="info"><?php echo $mother_name; ?></p>
         <h2>Grandfather's Name</h2>
         <p class="info"><?php echo $grandfather_name; ?></p>
+
+        <h1>Permanent Address Information</h1>
         <h2>City/Village</h2>
         <p class="info"><?php echo $p_city; ?></p>
         <h2>Ward Number</h2>
@@ -135,7 +186,45 @@ $conn->close();
         <p class="info"><?php echo $p_municipality; ?></p>
         <h2>Province</h2>
         <p class="info"><?php echo $p_province; ?></p>
+
+        <h1>Temporary Address Information</h1>
+        <h2>City/Village</h2>
+        <p class="info"><?php echo $t_city; ?></p>
+        <h2>Ward Number</h2>
+        <p class="info"><?php echo $t_ward; ?></p>
+        <h2>District</h2>
+        <p class="info"><?php echo $t_district; ?></p>
+        <h2>Municipality</h2>
+        <p class="info"><?php echo $t_municipality; ?></p>
+        <h2>Province</h2>
+        <p class="info"><?php echo $t_province; ?></p>
     </div>
+
+    <div class="overlay">
+        <span class="close-btn">&times;</span>
+        <img src="" alt="Large Image">
     </div>
+
+    <div></div>
+
+    <script src="script.js"></script>
+    <script>
+        const imageContainers = document.querySelectorAll('.image-container');
+        const overlay = document.querySelector('.overlay');
+        const overlayImg = overlay.querySelector('img');
+        const closeBtn = document.querySelector('.close-btn');
+
+        imageContainers.forEach(function(container) {
+        container.addEventListener('click', function() {
+                const imgSrc = this.querySelector('img').getAttribute('src');
+                overlayImg.src = imgSrc;
+                overlay.style.display = 'flex';
+            });
+        });
+
+        closeBtn.addEventListener('click', function() {
+            overlay.style.display = 'none';
+        });
+    </script>
 </body>
 </html>

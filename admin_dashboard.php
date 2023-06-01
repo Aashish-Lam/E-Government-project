@@ -25,6 +25,7 @@ if(isset($_SESSION['admin_id'])){
         include 'admin_header.php';
     ?>
 
+    <h1 style="font-size: 4rem; text-align: center; text-decoration: underline; color: #0093e9;">Dashboard</h1>
     <section class="dashboard">
         <div class="box-container">
             <div class="box">
@@ -82,22 +83,9 @@ if(isset($_SESSION['admin_id'])){
                 <a href="see_users.php" class="btn">View List</a>
             </div>
 
-            <div class="box">
-                <?php
-                    $select_users = $conn->prepare("SELECT * FROM `users`");
-                    $select_users->execute();
-                    $number_of_users = $select_users->rowCount()
-                ?>
-                <h3><?= $number_of_users; ?></h3>
-                <p>Users</p>
-                <a href="see_users.php" class="btn">View List</a>
-            </div>
         </div>
     </section>
 
-    <?php
-        include 'footer.php';
-    ?>
     <script src="script.js"></script>
 </body>
 </html>
