@@ -63,7 +63,9 @@ $select_certificates->execute([$user_id]);
     ?>
 </ul>
 
-
+<?php
+include 'footer.php';
+?>
 
 <script src="script.js"></script>
 </body>
