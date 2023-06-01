@@ -50,7 +50,7 @@ $select_certificates->execute([$user_id]);
                 <h3><?php echo $full_name; ?></h3>
                 <p>Date of Birth: <?php echo $dob; ?></p>
             </div>
-            <a href="view_certificate.php?cid=<?= $row['id']; ?>">View Certificate</a>
+            <a style="color=black" href="view_certificate.php?cid=<?= $row['id']; ?>">View Certificate</a>
         </li>
 
     <?php
