@@ -16,6 +16,7 @@ $cid = $_GET['cid'];
 $select_certificates = $conn->prepare("SELECT * FROM `a_certificates` WHERE id = ?");
 $select_certificates->execute([$cid]);
 
+if($select_certificates->rowCount() > 0){
 $fetch_certificates = $select_certificates->fetch(PDO::FETCH_ASSOC);
 
 $tob = date("h:i A", strtotime($fetch_certificates['time_of_birth']));
@@ -39,7 +40,10 @@ $t_ward = $fetch_certificates["t_ward"];
 $t_district = $fetch_certificates["t_district"];
 $t_municipality = $fetch_certificates["t_municipality"];
 $t_province = $fetch_certificates["t_province"];
-
+}
+else{
+    header('Location: see_a_certificates.php');
+}
 ?>
 
 <!DOCTYPE html>
