@@ -38,11 +38,12 @@ CREATE TABLE `u_certificates` (
 
 CREATE TABLE admin (
   id INT PRIMARY KEY AUTO_INCREMENT,
+  name VARCHAR(255) NOT NULL,
   email VARCHAR(255) NOT NULL,
   password VARCHAR(255) NOT NULL
 );
 
-INSERT INTO admin (email, password)
-VALUES ('admin1@example.com', 'password1'),
-       ('admin2@example.com', 'password2'),
-       ('admin3@example.com', 'password3');
+INSERT INTO admin (name, email, password)
+VALUES ('admin1', 'admin1@example.com', 'password1'),
+       ('admin1', 'admin2@example.com', 'password2'),
+       ('admin1', 'admin3@example.com', 'password3');
