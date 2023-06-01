@@ -35,3 +35,14 @@ CREATE TABLE `u_certificates` (
     `user_id` INT(11) NOT NULL,
     `citizenship_no` VARCHAR(255) NOT NULL
 );
+
+CREATE TABLE admin (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  email VARCHAR(255) NOT NULL,
+  password VARCHAR(255) NOT NULL
+);
+
+INSERT INTO admin (email, password)
+VALUES ('admin1@example.com', 'password1'),
+       ('admin2@example.com', 'password2'),
+       ('admin3@example.com', 'password3');

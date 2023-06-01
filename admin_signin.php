@@ -10,7 +10,25 @@ if(isset($_SESSION['user_id'])){
     $user_id = '';
 };
 
+if(isset($_POST['submit'])){
 
+    $email = $_POST['email'];
+    $email = filter_var($email, FILTER_UNSAFE_RAW);
+    $pass = $_POST['pass'];
+    $pass = filter_var($pass, FILTER_UNSAFE_RAW);
+
+    $select_user = $conn->prepare("SELECT * FROM `admin` WHERE email = ? AND password = ?");
+    $select_user->execute([$email, $pass]);
+    $row = $select_user->fetch(PDO::FETCH_ASSOC);
+
+    if($select_user->rowCount() > 0){
+        $_SESSION['admin_id'] = $row['id'];
+        header('location:admin_dashboard.php');
+    }else{
+        $message[] = 'Incorrect Email or Password!';
+    }
+
+}
 
 ?>
 
@@ -22,7 +40,7 @@ if(isset($_SESSION['user_id'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Sign In</title>
 
-    <link rel="stylesheet" href="sign.css">
+    <link rel="stylesheet" href="admin.css">
 </head>
 <body>
 <?php
@@ -40,7 +58,7 @@ if(isset($_SESSION['user_id'])){
 
       </div>
       <div class="textbox">
-        <input type="password" placeholder="Password" name="pass" value="" maxlength="8" required>
+        <input type="password" placeholder="Password" name="pass" value="" required>
       </div>
 
       <input class="btn" type="submit" name="submit" value="Sign in">

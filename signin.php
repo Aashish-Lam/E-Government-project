@@ -40,7 +40,7 @@ if(isset($_POST['submit'])){
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title> Sign In Form </title>
   <link rel="stylesheet" type="text/css" href="sign.css">
-  <script src="blob.js"></script>
+  
 </head> 
 
 <body>
