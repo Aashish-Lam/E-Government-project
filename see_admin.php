@@ -87,7 +87,7 @@ include 'admin_header.php';
                 // Check if delete button is clicked
                 if (isset($_POST['delete'])) {
                     $id = $_POST['id'];
-                    $deleteSql = "DELETE FROM users WHERE id = $id";
+                    $deleteSql = "DELETE FROM admin WHERE id = $id";
                     if ($conn->query($deleteSql) === TRUE) {
                         echo "Record deleted successfully.";
                     } else {
@@ -96,7 +96,7 @@ include 'admin_header.php';
                 }
 
                 // SQL query to retrieve username and email from the database
-                $sql = "SELECT id, username, email FROM users";
+                $sql = "SELECT id, name, email FROM admin";
 
                 $result = $conn->query($sql);
 
@@ -104,7 +104,7 @@ include 'admin_header.php';
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr>";
                         echo "<td>" . $row["id"] . "</td>";
-                        echo "<td>" . $row["username"] . "</td>";
+                        echo "<td>" . $row["name"] . "</td>";
                         echo "<td>" . $row["email"] . "</td>";
                         echo "<td>
                                 <form method='post'>
