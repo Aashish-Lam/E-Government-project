@@ -42,10 +42,10 @@ include 'header.php';
 
 <div class="certificate">
             
-  <div class="container">
+  <div class="container" width="100%" height="100%">
     <div class="head">
       <img src="image/Coat-of-arms-of-Nepal-01.png">
-      <p>Government of Nepal
+      <p style="color:	#87CEEB";>Government of Nepal
         <br>Ministry of Health and Population<br>
       Kamaladi, Kathmandu</p>
       <img id="pp_image" src="uploaded_img/<?= $fetch_certificates['pp_image']; ?>" alt="">
