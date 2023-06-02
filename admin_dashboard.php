@@ -69,7 +69,7 @@ if(isset($_SESSION['admin_id'])){
                 ?>
                 <h3><?= $number_of_admin; ?></h3>
                 <p>Admin</p>
-                <a href="see_users.php" class="btn">View List</a>
+                <a href="see_admin.php" class="btn">View List</a>
             </div>
 
             <div class="box">
