@@ -56,7 +56,7 @@ if(isset($_POST['submit'])){
     $photo1_error = $_FILES['photo1']['error'];
     $photo1_size = $_FILES['photo1']['size'];
     $photo1_folder = 'uploaded_img/'.$photo1_name;
- 
+
     $photo2_name = $_FILES['photo2']['name'];
     $photo2_tmp_name = $_FILES['photo2']['tmp_name'];
     $photo2_type = $_FILES['photo2']['type'];
@@ -73,29 +73,26 @@ if(isset($_POST['submit'])){
 
     $select_certificates = $conn->prepare("SELECT * FROM `u_certificates` WHERE user_id = ?");
     $select_certificates->execute([$user_id]);
- 
+
     if($select_certificates->rowCount() < 6){
         $insert_certificates = $conn->prepare("INSERT INTO `u_certificates`(full_name, date_of_birth, time_of_birth, gender, pp_image, document_image, father_name, citizenship_image, mother_name, grandfather_name, p_city, p_ward, p_district, p_municipality, p_province, t_city, t_ward, t_district, t_municipality, t_province, user_id, citizenship_no) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
         $insert_certificates->execute([$full_name, $dob, $tob, $gender, $photo1_name, $photo2_name, $father_name, $photo3_name, $mother_name, $grandfather_name, $p_city, $p_ward, $p_district, $p_municipality, $p_province, $t_city, $t_ward, $t_district, $t_municipality, $t_province, $user_id, $citizenship_no]);
-  
         if($insert_certificates){
-           if($photo1_size > 2000000 OR $photo2_size > 2000000 OR $photo3_size > 2000000){
-              $message[] = 'Image size is too large!';
-           }else{
-              move_uploaded_file($photo1_tmp_name, $photo1_folder);
-              move_uploaded_file($photo2_tmp_name, $photo2_folder);
-              move_uploaded_file($photo3_tmp_name, $photo3_folder);
-              $message[] = 'Registration Successfull! Please wait for approval to view the Birth Certificate.';
-           }
-  
+            if($photo1_size > 2000000 OR $photo2_size > 2000000 OR $photo3_size > 2000000){
+                $message[] = 'Image size is too large!';
+            }else{
+                move_uploaded_file($photo1_tmp_name, $photo1_folder);
+                move_uploaded_file($photo2_tmp_name, $photo2_folder);
+                move_uploaded_file($photo3_tmp_name, $photo3_folder);
+                $message[] = 'Registration Successfull! Please wait for approval to view the Birth Certificate.';
+            }
         }
-       
     else{
         $message[] = 'You already have 10 registrations!';
     }  
     }
- 
- };
+
+};
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -105,7 +102,7 @@ if(isset($_POST['submit'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Birth Registration Form</title>
 
-    <link rel="stylesheet" href="birth_form2.css">
+    <link rel="stylesheet" href="birth_form.css">
 </head>
 <body>
 
@@ -284,6 +281,6 @@ if(isset($_POST['submit'])){
         
         preview.style.display = 'block';
         }
-      </script>
+    </script>
 </body>
 </html>
