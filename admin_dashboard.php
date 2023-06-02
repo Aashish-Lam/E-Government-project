@@ -80,7 +80,7 @@ if(isset($_SESSION['admin_id'])){
                 ?>
                 <h3><?= $number_of_users; ?></h3>
                 <p>Feedback</p>
-                <a href="see_users.php" class="btn">View List</a>
+                <a href="unapprove.php" class="btn">View List</a>
             </div>
 
         </div>

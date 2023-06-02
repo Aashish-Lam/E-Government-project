@@ -11,7 +11,7 @@ if(isset($_SESSION['admin_id'])){
     header('location:admin_signin.php');
 };
 
-$select_certificates = $conn->prepare("SELECT * FROM `u_certificates` ORDER BY id DESC");
+$select_certificates = $conn->prepare("SELECT * FROM `a_certificates` ORDER BY id DESC");
 $select_certificates->execute();
 ?>
 
@@ -21,7 +21,7 @@ $select_certificates->execute();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unapproved Certficates</title>
+    <title>Approved Certficates</title>
 
     <link rel="stylesheet" href="admin.css">
 </head>
@@ -34,7 +34,7 @@ $select_certificates->execute();
     <?php
     if($select_certificates->rowCount() > 0){?>
 
-        <h1 class="c1_title">Unapproved Certificates</h2>
+        <h1 class="c1_title">Approved Certificates</h2>
 
         <?php
         foreach ($select_certificates as $row) {
@@ -49,14 +49,14 @@ $select_certificates->execute();
                     <h3><?php echo $full_name; ?></h3>
                     <p>Date of Birth: <?php echo $dob; ?></p>
                 </div>
-                <a style="color=black" href="admin_u_view_certificate.php?cid=<?= $row['id']; ?>">View Certificate</a>
+                <a style="color=black" href="admin_a_view_certificate.php?cid=<?= $row['id']; ?>">View Certificate</a>
             </li>
 
         <?php
         }
     }
     else{?>
-        <h1 class="c1_title" >There are no Unapproved Certificates!</h1>
+        <h1 class="c1_title" >There are no Approved Certificates!</h1>
     <?php
     }
     ?>

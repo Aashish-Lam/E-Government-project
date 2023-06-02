@@ -11,7 +11,7 @@ if(isset($_SESSION['user_id'])){
     header('location:signin.php');
 };
 
-$select_certificates = $conn->prepare("SELECT * FROM `u_certificates` WHERE user_id = ?");
+$select_certificates = $conn->prepare("SELECT * FROM `a_certificates` WHERE user_id = ?");
 $select_certificates->execute([$user_id]);
 ?>
 
