@@ -1,10 +1,19 @@
+<?php
+
+$db_name = 'mysql:host=localhost;dbname=birth_certificates';
+$user_name = 'root';
+$user_password = '';
+
+$conn = new PDO($db_name, $user_name, $user_password);
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
     <style>
         .container-see {
             width: 400px;
-            margin: 0 auto;
+            margin: 100px auto;
             padding: 20px;
             border: 1px solid #ccc;
             border-radius: 5px;
@@ -40,7 +49,15 @@
     </style>
 </head>
 <body>
+    <div class="conatiner">
+    <?php
+include 'admin_header.php';
+?>
 
+
+<!-- Rest of your HTML content -->
+
+    </div>
     <div class="container-see">
         <table class="table">
             <thead>
