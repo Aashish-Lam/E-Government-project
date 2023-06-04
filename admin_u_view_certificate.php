@@ -249,7 +249,7 @@ else{
     </div>
 
     <div class="avc-button">
-        <a id="l1" href="update.php?cid=<?= $cid; ?>">Update &uarr;</a>
+        <a id="l1" href="u_updateform.php?cid=<?= $cid; ?>">Update &uarr;</a>
         <a id="l2" href="approve.php?cid=<?= $cid; ?>">Approve &#10003;</a>
         <a id="l3" href="u_delete.php?cid=<?= $cid; ?>">Delete &#128465;</a>
         <a id="l4" href="see_u_certificates.php">Go Back &#8592;</a>
