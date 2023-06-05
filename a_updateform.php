@@ -13,7 +13,7 @@ if(isset($_SESSION['admin_id'])){
 
 $cid = $_GET['cid'];
 
-$select_certificates = $conn->prepare("SELECT * FROM `u_certificates` WHERE id = ?");
+$select_certificates = $conn->prepare("SELECT * FROM `a_certificates` WHERE id = ?");
 $select_certificates->execute([$cid]);
 
 $fetch_certificates = $select_certificates->fetch(PDO::FETCH_ASSOC);
@@ -58,7 +58,7 @@ if(isset($_POST['update'])){
     $citizenship_no = filter_var($citizenship_no, FILTER_UNSAFE_RAW);
     $user_id = $_POST['user_id'];
  
-    $update_product = $conn->prepare("UPDATE `u_certificates` SET full_name = ?, date_of_birth = ?, time_of_birth = ?, gender = ?, father_name = ?, mother_name = ?, grandfather_name = ?, p_city = ?, p_ward = ?, p_district = ?, p_municipality = ?, p_province = ?, t_city = ?, t_ward = ?, t_district = ?, t_municipality = ?, t_province = ?, user_id = ?, citizenship_no = ? WHERE id = ?");
+    $update_product = $conn->prepare("UPDATE `a_certificates` SET full_name = ?, date_of_birth = ?, time_of_birth = ?, gender = ?, father_name = ?, mother_name = ?, grandfather_name = ?, p_city = ?, p_ward = ?, p_district = ?, p_municipality = ?, p_province = ?, t_city = ?, t_ward = ?, t_district = ?, t_municipality = ?, t_province = ?, user_id = ?, citizenship_no = ? WHERE id = ?");
     $update_product->execute([$full_name, $dob, $tob, $gender, $father_name, $mother_name, $grandfather_name, $p_city, $p_ward, $p_district, $p_municipality, $p_province, $t_city, $t_ward, $t_district, $t_municipality, $t_province, $user_id, $citizenship_no, $cid]);
  
  
@@ -73,7 +73,7 @@ if(isset($_POST['update'])){
       if($photo1_size > 2000000){
          $message[] = 'Image size is too large!';
       }else{
-         $update_image_01 = $conn->prepare("UPDATE `u_certificates` SET pp_image = ? WHERE id = ?");
+         $update_image_01 = $conn->prepare("UPDATE `a_certificates` SET pp_image = ? WHERE id = ?");
          $update_image_01->execute([$photo1, $cid]);
          move_uploaded_file($photo1_tmp_name, $photo1_folder);
          unlink('uploaded_img/'.$old_image_01);
@@ -92,7 +92,7 @@ if(isset($_POST['update'])){
      if($photo2_size > 2000000){
         $message[] = 'Image size is too large!';
      }else{
-        $update_image_02 = $conn->prepare("UPDATE `u_certificates` SET document_image = ? WHERE id = ?");
+        $update_image_02 = $conn->prepare("UPDATE `a_certificates` SET document_image = ? WHERE id = ?");
         $update_image_02->execute([$photo2, $cid]);
         move_uploaded_file($photo2_tmp_name, $photo2_folder);
         unlink('uploaded_img/'.$old_image_02);
@@ -111,7 +111,7 @@ if(isset($_POST['update'])){
     if($photo3_size > 2000000){
        $message[] = 'Image size is too large!';
     }else{
-       $update_image_03 = $conn->prepare("UPDATE `u_certificates` SET citizeship_image = ? WHERE id = ?");
+       $update_image_03 = $conn->prepare("UPDATE `a_certificates` SET citizeship_image = ? WHERE id = ?");
        $update_image_03->execute([$photo3, $cid]);
        move_uploaded_file($photo3_tmp_name, $photo3_folder);
        unlink('uploaded_img/'.$old_image_03);

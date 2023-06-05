@@ -32,7 +32,7 @@
 
     <ul class="nav-links">
         <li><a href="admin_dashboard.php" >Home</a></li>
-        <li><a href="about.php" >About Us</a></li>
+        <li><a href="admin_about.php" >About Us</a></li>
         <li><a href="#" id="myButton">Profile</a></li>
     </ul>
 
