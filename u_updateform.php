@@ -61,10 +61,65 @@ if(isset($_POST['update'])){
     $update_product = $conn->prepare("UPDATE `u_certificates` SET full_name = ?, date_of_birth = ?, time_of_birth = ?, gender = ?, father_name = ?, mother_name = ?, grandfather_name = ?, p_city = ?, p_ward = ?, p_district = ?, p_municipality = ?, p_province = ?, t_city = ?, t_ward = ?, t_district = ?, t_municipality = ?, t_province = ?, user_id = ?, citizenship_no = ? WHERE id = ?");
     $update_product->execute([$full_name, $dob, $tob, $gender, $father_name, $mother_name, $grandfather_name, $p_city, $p_ward, $p_district, $p_municipality, $p_province, $t_city, $t_ward, $t_district, $t_municipality, $t_province, $user_id, $citizenship_no, $cid]);
  
-    $message[] = 'updated successfully!';
  
- 
- 
+    $old_image_01 = $_POST['old_image_01'];
+    $photo1 = $_FILES['photo1']['name'];
+   //$photo1 = filter_var($photo1, FILTER_SANITIZE_STRING);
+   $photo1_size = $_FILES['photo1']['size'];
+   $photo1_tmp_name = $_FILES['photo1']['tmp_name'];
+   $photo1_folder = 'uploaded_img/'.$photo1;
+
+   if(!empty($photo1)){
+      if($photo1_size > 2000000){
+         $message[] = 'Image size is too large!';
+      }else{
+         $update_image_01 = $conn->prepare("UPDATE `u_certificates` SET pp_image = ? WHERE id = ?");
+         $update_image_01->execute([$photo1, $cid]);
+         move_uploaded_file($photo1_tmp_name, $photo1_folder);
+         unlink('uploaded_img/'.$old_image_01);
+         //$message[] = 'image 01 updated successfully!';
+      }
+   }
+
+   $old_image_02 = $_POST['old_image_02'];
+   $photo2 = $_FILES['photo2']['name'];
+  //$photo1 = filter_var($photo1, FILTER_SANITIZE_STRING);
+  $photo2_size = $_FILES['photo2']['size'];
+  $photo2_tmp_name = $_FILES['photo2']['tmp_name'];
+  $photo2_folder = 'uploaded_img/'.$photo2;
+
+  if(!empty($photo2)){
+     if($photo2_size > 2000000){
+        $message[] = 'Image size is too large!';
+     }else{
+        $update_image_02 = $conn->prepare("UPDATE `u_certificates` SET document_image = ? WHERE id = ?");
+        $update_image_02->execute([$photo2, $cid]);
+        move_uploaded_file($photo2_tmp_name, $photo2_folder);
+        unlink('uploaded_img/'.$old_image_02);
+        //$message[] = 'image 01 updated successfully!';
+     }
+  }
+
+  $old_image_03 = $_POST['old_image_03'];
+  $photo3 = $_FILES['photo3']['name'];
+ //$photo1 = filter_var($photo1, FILTER_SANITIZE_STRING);
+ $photo3_size = $_FILES['photo3']['size'];
+ $photo3_tmp_name = $_FILES['photo3']['tmp_name'];
+ $photo3_folder = 'uploaded_img/'.$photo3;
+
+ if(!empty($photo3)){
+    if($photo3_size > 2000000){
+       $message[] = 'Image size is too large!';
+    }else{
+       $update_image_03 = $conn->prepare("UPDATE `u_certificates` SET citizeship_image = ? WHERE id = ?");
+       $update_image_03->execute([$photo3, $cid]);
+       move_uploaded_file($photo3_tmp_name, $photo3_folder);
+       unlink('uploaded_img/'.$old_image_03);
+       //$message[] = 'image 01 updated successfully!';
+    }
+ }
+
+     $message[] = 'Updated successfully!';
  }
 ?>
 <!DOCTYPE html>
@@ -117,9 +172,9 @@ if(isset($_POST['update'])){
                 <td>Gender</td>
                 <td>
                     <select name="gender">
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
-                        <option value="Other">Other</option>
+                        <option value="Male" <?php if ($fetch_certificates['gender'] === 'Male') echo 'selected'; ?>>Male</option>
+                        <option value="Female" <?php if ($fetch_certificates['gender'] === 'Female') echo 'selected'; ?>>Female</option>
+                        <option value="Other" <?php if ($fetch_certificates['gender'] === 'Other') echo 'selected'; ?>>Other</option>
                     </select>
                 </td>
             </tr>
@@ -195,13 +250,13 @@ if(isset($_POST['update'])){
                 <td>Province</td>
                 <td>
                     <select name="p_province">
-                        <option value="Province1">Province-1</option>
-                        <option value="Province2">Province-2</option>
-                        <option value="Province3">Province-3</option>
-                        <option value="Province4">Province-4</option>
-                        <option value="Province5">Province-5</option>
-                        <option value="Province6">Province-6</option>
-                        <option value="Province7">Province-7</option>
+                        <option value="Province1" <?php if ($fetch_certificates['p_province'] === 'Province1') echo 'selected'; ?>>Province-1</option>
+                        <option value="Province2" <?php if ($fetch_certificates['p_province'] === 'Province2') echo 'selected'; ?>>Province-2</option>
+                        <option value="Province3" <?php if ($fetch_certificates['p_province'] === 'Province3') echo 'selected'; ?>>Province-3</option>
+                        <option value="Province4" <?php if ($fetch_certificates['p_province'] === 'Province4') echo 'selected'; ?>>Province-4</option>
+                        <option value="Province5" <?php if ($fetch_certificates['p_province'] === 'Province5') echo 'selected'; ?>>Province-5</option>
+                        <option value="Province6" <?php if ($fetch_certificates['p_province'] === 'Province6') echo 'selected'; ?>>Province-6</option>
+                        <option value="Province7" <?php if ($fetch_certificates['p_province'] === 'Province7') echo 'selected'; ?>>Province-7</option>
                     </select>
                 </td>
             </tr>
@@ -231,13 +286,13 @@ if(isset($_POST['update'])){
                 <td>Province</td>
                 <td>
                     <select name="t_province">
-                        <option value="Province1">Province-1</option>
-                        <option value="Province2">Province-2</option>
-                        <option value="Province3">Province-3</option>
-                        <option value="Province4">Province-4</option>
-                        <option value="Province5">Province-5</option>
-                        <option value="Province6">Province-6</option>
-                        <option value="Province7">Province-7</option>
+                        <option value="Province1" <?php if ($fetch_certificates['t_province'] === 'Province1') echo 'selected'; ?>>Province-1</option>
+                        <option value="Province2" <?php if ($fetch_certificates['t_province'] === 'Province2') echo 'selected'; ?>>Province-2</option>
+                        <option value="Province3" <?php if ($fetch_certificates['t_province'] === 'Province3') echo 'selected'; ?>>Province-3</option>
+                        <option value="Province4" <?php if ($fetch_certificates['t_province'] === 'Province4') echo 'selected'; ?>>Province-4</option>
+                        <option value="Province5" <?php if ($fetch_certificates['t_province'] === 'Province5') echo 'selected'; ?>>Province-5</option>
+                        <option value="Province6" <?php if ($fetch_certificates['t_province'] === 'Province6') echo 'selected'; ?>>Province-6</option>
+                        <option value="Province7" <?php if ($fetch_certificates['t_province'] === 'Province7') echo 'selected'; ?>>Province-7</option>
                     </select>
                 </td>
             </tr>
