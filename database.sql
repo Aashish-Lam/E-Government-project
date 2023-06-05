@@ -74,3 +74,13 @@ CREATE TABLE `a_certificates` (
     `user_id` INT(11) NOT NULL,
     `citizenship_no` VARCHAR(255) NOT NULL
 );
+
+CREATE TABLE feedback (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  user_id INT NOT NULL,
+  username VARCHAR(50) NOT NULL,
+  email VARCHAR(100) NOT NULL,
+  phone_number VARCHAR(20) NOT NULL,
+  message TEXT NOT NULL,
+  sub_date DATE
+);

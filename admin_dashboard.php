@@ -74,13 +74,13 @@ if(isset($_SESSION['admin_id'])){
 
             <div class="box">
                 <?php
-                    $select_users = $conn->prepare("SELECT * FROM `users`");
-                    $select_users->execute();
-                    $number_of_users = $select_users->rowCount()
+                    $select_feedback = $conn->prepare("SELECT * FROM `feedback`");
+                    $select_feedback->execute();
+                    $number_of_feedback = $select_feedback->rowCount()
                 ?>
-                <h3><?= $number_of_users; ?></h3>
+                <h3><?= $number_of_feedback; ?></h3>
                 <p>Feedback</p>
-                <a href="unapprove.php" class="btn">View List</a>
+                <a href="view_feedback.php" class="btn">View List</a>
             </div>
 
         </div>
