@@ -31,7 +31,7 @@
           <li><a href="index.php" >Home</a></li>
           <li><a href="certificate.php" >Certificate</a></li>
           <li><a href="about.php" >About Us</a></li>
-          <li><a href="feedback.php" >Feedback</a></li>
+          <li><a href="feedback2.php" >Contact</a></li>
           <!-- <li><button id="myButton">Profile</button></li> -->
           <li><a href="#" id="myButton">Profile</a></li>
           <!-- <li><a href="signup.php" >Signup</a></li>

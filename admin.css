@@ -82,9 +82,9 @@ body {
 .message{
   position: sticky;
   top:0;
-  max-width: 1200px;
+  max-width: 100%;
   margin:0 auto;
-  /* background-color: white; */
+  background-color: wheat;
   padding:1rem;
   display: flex;
   align-items: center;
@@ -346,3 +346,6 @@ body {
   .data-item:hover{
     background-color: whitesmoke;
   }
+
+  /* u_updateform */
+  

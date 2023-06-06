@@ -142,14 +142,14 @@ if(isset($_POST['submit'])){
             <tr>
                 <td>Passport-sized Photo</td>
                 <td>
-                    <input type="file" id="photo1" name="photo1" accept="image/jpg, image/jpeg, image/png, image/webp" onchange="loadPhoto(event, 'preview1')">
+                    <input type="file" id="photo1" name="photo1" accept="image/jpg, image/jpeg, image/png, image/webp" onchange="loadPhoto(event, 'preview1')" required>
                     <img id="preview1" src="#" alt="Passport-sized photo preview">
                 </td>
             </tr>
             <tr>
                 <td>Hospital-document Photo</td>
                 <td>
-                    <input type="file" id="photo2" name="photo2" accept="image/jpg, image/jpeg, image/png, image/webp" onchange="loadPhoto(event, 'preview2')">
+                    <input type="file" id="photo2" name="photo2" accept="image/jpg, image/jpeg, image/png, image/webp" onchange="loadPhoto(event, 'preview2')" required>
                     <img id="preview2" src="#" alt="Document photo preview">
                 </td>
             </tr>
@@ -161,26 +161,26 @@ if(isset($_POST['submit'])){
             </tr>
             <tr>
                 <td>Father's Name</td>
-                <td><input type="text" name="father_name"></td>
+                <td><input type="text" name="father_name" required></td>
             </tr>
             <tr>
                 <td>Father's Citizenship Number</td>
-                <td><input type="text" name="citizenship_no"></td>
+                <td><input type="text" name="citizenship_no" required></td>
             </tr>
             <tr>
                 <td>Father's Citizenship Photo</td>
                 <td>
-                    <input type="file" id="photo3" name="photo3" accept="image/jpg, image/jpeg, image/png, image/webp" onchange="loadPhoto(event, 'preview3')">
+                    <input type="file" id="photo3" name="photo3" accept="image/jpg, image/jpeg, image/png, image/webp" onchange="loadPhoto(event, 'preview3')" required>
                     <img id="preview3" src="#" alt="Citizenship photo preview">
                 </td>
             </tr>
             <tr>
                 <td>Mother's Name</td>
-                <td><input type="text" name="mother_name"></td>
+                <td><input type="text" name="mother_name" required></td>
             </tr>
             <tr>
                 <td>Grandfather's Name</td>
-                <td><input type="text" name="grandfather_name"></td>
+                <td><input type="text" name="grandfather_name" required></td>
             </tr>
         </table>
     
@@ -190,24 +190,24 @@ if(isset($_POST['submit'])){
             </tr>
             <tr>
                 <td>City/Village</td>
-                <td><input type="text" name="p_city"></td>
+                <td><input type="text" name="p_city" required></td>
             </tr>
             <tr>
                 <td>Ward Number</td>
-                <td><input type="number" name="p_ward"></td>
+                <td><input type="number" name="p_ward" required></td>
             </tr>
             <tr>
                 <td>District</td>
-                <td><input type="text" name="p_district"></td>
+                <td><input type="text" name="p_district" required></td>
             </tr>
             <tr>
                 <td>Municipality</td>
-                <td><input type="text" name="p_municipality"></td>
+                <td><input type="text" name="p_municipality" required></td>
             </tr>
             <tr>
                 <td>Province</td>
                 <td>
-                    <select name="p_province">
+                    <select name="p_province" required>
                         <option value="Province1">Province-1</option>
                         <option value="Province2">Province-2</option>
                         <option value="Province3">Province-3</option>
@@ -226,24 +226,24 @@ if(isset($_POST['submit'])){
             </tr>
             <tr>
                 <td>City/Village</td>
-                <td><input type="text" name="t_city"></td>
+                <td><input type="text" name="t_city" required></td>
             </tr>
             <tr>
                 <td>Ward Number</td>
-                <td><input type="number" name="t_ward"></td>
+                <td><input type="number" name="t_ward" required></td>
             </tr>
             <tr>
                 <td>District</td>
-                <td><input type="text" name="t_district"></td>
+                <td><input type="text" name="t_district" required></td>
             </tr>
             <tr>
                 <td>Municipality</td>
-                <td><input type="text" name="t_municipality"></td>
+                <td><input type="text" name="t_municipality" required></td>
             </tr>
             <tr>
                 <td>Province</td>
                 <td>
-                    <select name="t_province">
+                    <select name="t_province" required>
                         <option value="Province1">Province-1</option>
                         <option value="Province2">Province-2</option>
                         <option value="Province3">Province-3</option>
