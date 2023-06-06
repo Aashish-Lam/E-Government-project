@@ -36,7 +36,7 @@ if(isset($_POST['signup'])){
       }else{
           $insert_user = $conn->prepare("INSERT INTO `users`(username, email, phone, password) VALUES(?,?,?,?)");
           $insert_user->execute([$username, $email, $phone, $cpass]);
-          $message[] = 'Registered successfully, Login now please!';
+          // $message[] = 'Registered successfully, Login now please!';
           header('location:signin.php');
       }
     }

@@ -17,6 +17,7 @@ $conn = new PDO($db_name, $user_name, $user_password);
             padding: 20px;
             border: 1px solid #ccc;
             border-radius: 5px;
+            font-family: Arial, sans-serif;
         }
 
         .table {

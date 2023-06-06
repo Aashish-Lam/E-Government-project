@@ -4,7 +4,7 @@ body {
   width: 100%;
   background-color: #0093e9;
   background-image: linear-gradient(10deg, #0094e98d 0%, #80d0c76e 100%);
-  /* font-family: "Roboto Slab", serif; */
+  font-family: Arial, sans-serif;
 }
 
 .nav {

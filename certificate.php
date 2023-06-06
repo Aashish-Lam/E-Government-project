@@ -11,8 +11,11 @@ if(isset($_SESSION['user_id'])){
     header('location:signin.php');
 };
 
-$select_certificates = $conn->prepare("SELECT * FROM `a_certificates` WHERE user_id = ?");
-$select_certificates->execute([$user_id]);
+$select_a_certificates = $conn->prepare("SELECT * FROM `a_certificates` WHERE user_id = ?");
+$select_a_certificates->execute([$user_id]);
+
+$select_u_certificates = $conn->prepare("SELECT * FROM `u_certificates` WHERE user_id = ?");
+$select_u_certificates->execute([$user_id]);
 ?>
 
 <!DOCTYPE html>
@@ -32,13 +35,16 @@ $select_certificates->execute([$user_id]);
 
     <ul class="data-list">
     <?php
-    // Assuming you have fetched the data from the database and stored it in an array called $dataRows
-    if($select_certificates->rowCount() > 0){?>
+    if($select_u_certificates->rowCount() > 0){?>
+        <h1 class="c1_title" style="color:red; font-size: 2rem;">You have <?php echo $select_u_certificates->rowCount(); ?> unapproved registrations!</h1>
+        <?php
+        };
+        if($select_a_certificates->rowCount() > 0){?>
 
-        <h1 class="c1_title">Your Certificates</h2>
+        <h1 class="c1_title">Your Approved Certificates</h2>
 
         <?php
-    foreach ($select_certificates as $row) {
+    foreach ($select_a_certificates as $row) {
         $image = $row['pp_image'];
         $full_name = $row['full_name'];
         $dob = $row['date_of_birth'];
@@ -57,7 +63,8 @@ $select_certificates->execute([$user_id]);
     }
     }
     else{?>
-        <h1 class="c1_title" >You dont have any certificates!</h1>
+        <h1 class="c1_title" >You don't have any approved certificates!</h1>
+        <div style="position: relative; left:43%;" ><a href="birth_form.php" style="font-size: 2rem; color: black;">Register Now!</a></div>
     <?php
     }
     ?>

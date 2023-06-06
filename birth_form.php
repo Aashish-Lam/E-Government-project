@@ -11,6 +11,15 @@ if(isset($_SESSION['user_id'])){
     header('location:signin.php');
 };
 
+$select_u_certificates = $conn->prepare("SELECT * FROM `u_certificates` WHERE user_id = ?");
+$select_u_certificates->execute([$user_id]);
+
+$select_a_certificates = $conn->prepare("SELECT * FROM `a_certificates` WHERE user_id = ?");
+$select_a_certificates->execute([$user_id]);
+
+$u_certificates_count = $select_u_certificates->rowCount();
+$a_certificates_count = $select_a_certificates->rowCount();
+
 if(isset($_POST['submit'])){
 
     $full_name = $_POST['full_name'];
@@ -71,10 +80,6 @@ if(isset($_POST['submit'])){
     $photo3_size = $_FILES['photo3']['size'];
     $photo3_folder = 'uploaded_img/'.$photo3_name;
 
-    $select_certificates = $conn->prepare("SELECT * FROM `u_certificates` WHERE user_id = ?");
-    $select_certificates->execute([$user_id]);
-
-    if($select_certificates->rowCount() < 6){
         $insert_certificates = $conn->prepare("INSERT INTO `u_certificates`(full_name, date_of_birth, time_of_birth, gender, pp_image, document_image, father_name, citizenship_image, mother_name, grandfather_name, p_city, p_ward, p_district, p_municipality, p_province, t_city, t_ward, t_district, t_municipality, t_province, user_id, citizenship_no) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
         $insert_certificates->execute([$full_name, $dob, $tob, $gender, $photo1_name, $photo2_name, $father_name, $photo3_name, $mother_name, $grandfather_name, $p_city, $p_ward, $p_district, $p_municipality, $p_province, $t_city, $t_ward, $t_district, $t_municipality, $t_province, $user_id, $citizenship_no]);
         if($insert_certificates){
@@ -86,13 +91,9 @@ if(isset($_POST['submit'])){
                 move_uploaded_file($photo3_tmp_name, $photo3_folder);
                 $message[] = 'Registration Successfull! Please wait for approval to view the Birth Certificate.';
             }
-        }
-    else{
-        $message[] = 'You already have 10 registrations!';
-    }  
     }
+}
 
-};
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -110,6 +111,8 @@ if(isset($_POST['submit'])){
     include 'header.php';
     ?>
 
+    <?php
+    if(($u_certificates_count + $a_certificates_count) < 6){?>
     <section>
     <h1>Birth Registration Form</h1>
     <form action="" method="POST" enctype="multipart/form-data">
@@ -259,6 +262,14 @@ if(isset($_POST['submit'])){
         <input type="submit" value="Register" name="submit">
     </form>
     </section>
+    <?php
+    }else{?>
+        <h1>You already have 6 registrations. You cannot register more!!</h1>
+    <?php
+    };
+
+    ?>
+
 
     <script src="script.js"></script>
     <script>
